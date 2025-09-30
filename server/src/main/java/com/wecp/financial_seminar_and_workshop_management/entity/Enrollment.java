@@ -1,15 +1,6 @@
 package com.wecp.financial_seminar_and_workshop_management.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-<<<<<<< HEAD
-
-import javax.persistence.*;
-
-
-public class Enrollment {
-    // implement entity
-}
-=======
 import javax.persistence.*;
 
 @Entity
@@ -34,4 +25,3 @@ public class Enrollment {
     public Event getEvent() { return event; }
     public void setEvent(Event event) { this.event = event; }
 }
->>>>>>> 0d221b740ff89a243050c3e642c540fb911f0c6e
