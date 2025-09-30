@@ -16,29 +16,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-<<<<<<< HEAD
-
-public class SecurityConfig{
-
-    // Implement security configuration here
-    // /api/user/register and /api/user/login should be permitted to all
-    // /api/institution/event should be permitted to INSTITUTION
-    // /api/institution/event/{id} should be permitted to INSTITUTION
-    // /api/institution/events should be permitted to INSTITUTION
-    // /api/institution/event/{eventId}/resource should be permitted to INSTITUTION
-    // /api/institution/event/professionals should be permitted to INSTITUTION
-    // /api/institution/event/{eventId}/professional should be permitted to INSTITUTION
-    // /api/professional/events should be permitted to PROFESSIONAL
-    // /api/professional/event/{id}/status should be permitted to PROFESSIONAL
-    // /api/professional/event/{eventId}/feedback should be permitted to PROFESSIONAL
-    // /api/participant/events should be permitted to PARTICIPANT
-    // /api/participant/event/{eventId}/enroll should be permitted to PARTICIPANT
-    // /api/participant/event/{id}/status should be permitted to PARTICIPANT
-    // /api/participant/event/{eventId}/feedback should be permitted to PARTICIPANT
-
-    // Note: Use hasAuthority method to check the role of the user
-    // for example, hasAuthority("INSTITUTION")
-=======
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -80,5 +57,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
->>>>>>> 0d221b740ff89a243050c3e642c540fb911f0c6e
 }
