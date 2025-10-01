@@ -13,12 +13,13 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Service
 public class UserService implements UserDetailsService {
 
-    @Autowired private UserRepository userRepository;
-    @Autowired private PasswordEncoder passwordEncoder;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public User register(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -44,7 +45,6 @@ public class UserService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(
                 u.getUsername(),
                 u.getPassword(),
-                AuthorityUtils.createAuthorityList(u.getRole())
-        );
+                AuthorityUtils.createAuthorityList(u.getRole()));
     }
 }
