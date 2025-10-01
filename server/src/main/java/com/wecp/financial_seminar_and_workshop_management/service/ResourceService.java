@@ -11,7 +11,21 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 
+<<<<<<< HEAD
 public class ResourceService {
 
     // implement service methods here
+=======
+@Service
+public class ResourceService {
+
+    @Autowired private ResourceRepository resourceRepository;
+    @Autowired private EventRepository eventRepository;
+
+    public Resource addToEvent(Long eventId, Resource resource) {
+        Event e = eventRepository.findById(eventId).orElseThrow();
+        resource.setEvent(e);
+        return resourceRepository.save(resource);
+    }
+>>>>>>> 8f26cd5563b728585b36a8b23aca74cdc449960d
 }
