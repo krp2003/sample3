@@ -1,19 +1,5 @@
 package com.wecp.financial_seminar_and_workshop_management.entity;
 
-<<<<<<< HEAD
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.Date;
-
-
-public class Feedback {
-    // implement feedback entity
-=======
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.Date;
@@ -52,5 +38,4 @@ public class Feedback {
 
     public Event getEvent() { return event; }
     public void setEvent(Event event) { this.event = event; }
->>>>>>> 8f26cd5563b728585b36a8b23aca74cdc449960d
 }
