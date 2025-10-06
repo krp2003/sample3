@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
     }
     this.httpService.login(this.itemForm.value).subscribe({
       next: (res) => {this.authService.saveToken(res.token);
-        console.log(res.token);
                       if(res.userId) {
                         localStorage.setItem('userId', res.userId.toString());
                         localStorage.setItem('role', res.role);

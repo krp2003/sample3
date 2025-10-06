@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 
 @Component({
@@ -14,7 +14,8 @@ export class EventDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private http: HttpService
+    private http: HttpService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -25,7 +26,6 @@ export class EventDetailsComponent implements OnInit {
   fetchEventDetails(): void {
     this.http.getEventDetails(this.eventId).subscribe({
       next: (res) => {
-        console.log(res);
         this.eventData = res;
         this.loading = false;
       },
@@ -34,5 +34,9 @@ export class EventDetailsComponent implements OnInit {
         this.loading = false;
       }
     });
+  }
+
+  viewEnrollments() {
+    this.router.navigateByUrl(`api/events/${this.eventId}/enrollments`)
   }
 }

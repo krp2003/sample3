@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.wecp.financial_seminar_and_workshop_management.dto.EventDetailsDTO;
+import com.wecp.financial_seminar_and_workshop_management.entity.Enrollment;
 import com.wecp.financial_seminar_and_workshop_management.entity.Event;
 import com.wecp.financial_seminar_and_workshop_management.entity.Feedback;
+import com.wecp.financial_seminar_and_workshop_management.service.EnrollmentService;
 import com.wecp.financial_seminar_and_workshop_management.service.EventService;
 import com.wecp.financial_seminar_and_workshop_management.service.FeedbackService;
 import com.wecp.financial_seminar_and_workshop_management.service.ResourceService;
@@ -32,5 +34,10 @@ public class EventController {
 
         EventDetailsDTO dto = new EventDetailsDTO(event, resources, feedbacks);
         return ResponseEntity.ok(dto);
+    }
+
+    @GetMapping("api/events/{eventId}/enrollments")
+    public ResponseEntity<List<Enrollment>> getEnrollments(@PathVariable Long eventId){
+        return ResponseEntity.ok(eventService.getAllEnrollments(eventId));
     }
 }

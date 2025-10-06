@@ -1,8 +1,10 @@
 package com.wecp.financial_seminar_and_workshop_management.service;
 
 
+import com.wecp.financial_seminar_and_workshop_management.entity.Enrollment;
 import com.wecp.financial_seminar_and_workshop_management.entity.Event;
 import com.wecp.financial_seminar_and_workshop_management.entity.User;
+import com.wecp.financial_seminar_and_workshop_management.repository.EnrollmentRepository;
 import com.wecp.financial_seminar_and_workshop_management.repository.EventRepository;
 import com.wecp.financial_seminar_and_workshop_management.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ public class EventService {
 
     @Autowired private EventRepository eventRepository;
     @Autowired private UserRepository userRepository;
+    @Autowired private EnrollmentRepository enrollmentRepository;
 
     public Event create(Event event) {
         return eventRepository.save(event);
@@ -61,5 +64,9 @@ public class EventService {
         Event e = eventRepository.findById(id).orElseThrow();
         e.setStatus(status);
         return eventRepository.save(e);
+    }
+
+    public List<Enrollment> getAllEnrollments(Long id) {
+        return enrollmentRepository.findAllByEventId(id);
     }
 }

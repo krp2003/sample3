@@ -19,6 +19,7 @@ import { AssignProfessionalComponent } from './assign-professional/assign-profes
 import { UpdateEventStatusComponent } from './update-event-status/update-event-status.component';
 import { AddFeedbackComponent } from './add-feedback/add-feedback.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
+import { ViewEnrollmentsComponent } from './view-enrollments/view-enrollments.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { EventDetailsComponent } from './event-details/event-details.component';
       AddResourceComponent,
       EventDetailsComponent,
       ViewEventsComponent,
+      ViewEnrollmentsComponent,
      
    
       AssignProfessionalComponent,

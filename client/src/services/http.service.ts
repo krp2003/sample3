@@ -126,4 +126,8 @@ export class HttpService {
   getEventDetails(eventId: any): Observable<any> {
     return this.http.get(`${this.serverName}/api/events/${eventId}`, this.opts());
   }
+
+  getEnrollments(eventId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.serverName}/api/events/${eventId}/enrollments`, this.opts());
+  }
 }

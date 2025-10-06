@@ -62,6 +62,7 @@ public class SecurityConfig {
 
             // Finance endpoints
             .antMatchers(HttpMethod.GET, "/api/finance/events").hasAnyAuthority("institution", "participant", "professional")
+            .antMatchers(HttpMethod.GET, "/api/events/**/enrollments").hasAuthority("institution")
 
             // All other API requests require authentication
             .antMatchers("/api/**").authenticated()

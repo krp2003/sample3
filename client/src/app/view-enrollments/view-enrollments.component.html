@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <h2>Enrolled Students</h2>
+
+  <div *ngIf="loading">Loading enrollments...</div>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <table *ngIf="!loading && enrollments.length > 0" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Student Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let enrollment of enrollments; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ enrollment.user.username || 'N/A' }}</td>
+        <td>{{ enrollment.user.email || 'N/A' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!loading && enrollments.length === 0">No students enrolled yet.</p>
+</div>
