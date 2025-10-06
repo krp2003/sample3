@@ -21,6 +21,9 @@
           <button (click)="checkStatus(event.id)" class="secondary-btn">
             Check Status
           </button>
+          <button (click)="viewDetails(event.id)" class="secondary-btn">
+            View Details
+          </button>
           <button (click)="enroll(event.id)" class="primary-btn">Enroll</button>
           <div class="status-text" *ngIf="statusResults[event.id]">
             {{ statusResults[event.id] }}

@@ -12,7 +12,7 @@ public class Feedback {
     private Long id;
 
     @Column(length=2000)
-    private String content;
+    private Object content;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
@@ -27,8 +27,8 @@ public class Feedback {
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public String getContent() { return content; }
-    public void setContent(String content) { this.content = content; }
+    public Object getContent() { return content; }
+    public void setContent(Object content) { this.content = content; }
 
     public Date getTimestamp() { return timestamp; }
     public void setTimestamp(Date timestamp) { this.timestamp = timestamp; }

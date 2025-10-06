@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-events',
@@ -16,7 +17,7 @@ export class ViewEventsComponent implements OnInit {
 
   errorMessage = '';
 
-  constructor(private httpService: HttpService, public authService: AuthService) {}
+  constructor(private httpService: HttpService, public authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     if(localStorage.getItem('role') === 'professional') {
@@ -42,6 +43,10 @@ export class ViewEventsComponent implements OnInit {
         this.statusResults[eventId] = 'Error fetching status';
       }
     });
+  }
+
+  viewDetails(eventId: any): void {
+    this.router.navigateByUrl(`/events/${eventId}`);
   }
 
   enroll(eventId: any): void {

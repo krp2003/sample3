@@ -11,13 +11,14 @@ import { HttpService } from '../services/http.service';
 import { DashbaordComponent } from './dashbaord/dashbaord.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { AddResourceComponent } from './add-resource/add-resource.component';
-
+import { CommonModule } from '@angular/common';
 import { ViewEventsComponent } from './view-events/view-events.component';
 
 
 import { AssignProfessionalComponent } from './assign-professional/assign-professional.component';
 import { UpdateEventStatusComponent } from './update-event-status/update-event-status.component';
 import { AddFeedbackComponent } from './add-feedback/add-feedback.component';
+import { EventDetailsComponent } from './event-details/event-details.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { AddFeedbackComponent } from './add-feedback/add-feedback.component';
       DashbaordComponent,    
       CreateEventComponent,
       AddResourceComponent,
-
+      EventDetailsComponent,
       ViewEventsComponent,
      
    
@@ -36,6 +37,7 @@ import { AddFeedbackComponent } from './add-feedback/add-feedback.component';
            AddFeedbackComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

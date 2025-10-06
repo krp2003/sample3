@@ -32,7 +32,7 @@ public class ProfessionalController {
     @PostMapping("/api/professional/event/{eventId}/feedback")
     public ResponseEntity<Feedback> provideFeedback(@PathVariable Long eventId,
                                                     @RequestParam Long userId,
-                                                    @RequestBody Feedback feedback) {
+                                                    @RequestBody String feedback) {
         return ResponseEntity.ok(feedbackService.addFeedback(userId, eventId, feedback));
     }
 }

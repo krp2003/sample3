@@ -39,7 +39,7 @@ public class ParticipantController {
     @PostMapping("/api/participant/event/{eventId}/feedback")
     public ResponseEntity<Feedback> provideFeedback(@RequestParam Long userId,
                                                     @PathVariable Long eventId,
-                                                    @RequestBody Feedback feedback) {
+                                                    @RequestBody String feedback) {
         return ResponseEntity.ok(feedbackService.addFeedback(userId, eventId, feedback));
     }
 }

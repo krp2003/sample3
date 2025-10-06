@@ -121,4 +121,9 @@ export class HttpService {
       this.opts()
     );
   }
+
+
+  getEventDetails(eventId: any): Observable<any> {
+    return this.http.get(`${this.serverName}/api/events/${eventId}`, this.opts());
+  }
 }
