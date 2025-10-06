@@ -21,7 +21,15 @@ public class Feedback {
     @Temporal(TemporalType.DATE)
     private Date timestamp;
 
-    @ManyToOne @JoinColumn(name = "user_id")
+    private String datestring;
+
+    public String getDatestring() {
+		return datestring;
+	}
+	public void setDatestring(String datestring) {
+		this.datestring = datestring;
+	}
+	@ManyToOne @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne @JoinColumn(name = "event_id")

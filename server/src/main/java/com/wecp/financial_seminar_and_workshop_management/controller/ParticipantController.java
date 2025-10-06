@@ -40,6 +40,7 @@ public class ParticipantController {
     public ResponseEntity<Feedback> provideFeedback(@RequestParam Long userId,
                                                     @PathVariable Long eventId,
                                                     @RequestBody Feedback feedback) {
+                System.out.println(feedback.getDatestring());
         return ResponseEntity.ok(feedbackService.addFeedback(userId, eventId, feedback));
     }
 }

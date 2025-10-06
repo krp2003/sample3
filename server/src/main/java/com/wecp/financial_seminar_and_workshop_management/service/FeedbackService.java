@@ -30,7 +30,7 @@ public class FeedbackService {
         feedback.setUser(user);
         feedback.setEvent(event);
         feedback.setContent(feedbackData.getContent());
-        feedback.setTimestamp(feedbackData.getTimestamp());
+        feedback.setDatestring(feedbackData.getDatestring());
         feedback.setRating(feedbackData.getRating());
         return feedbackRepository.save(feedback);
     }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { HttpService } from '../../services/http.service';
@@ -32,7 +32,7 @@ export class AddFeedbackComponent implements OnInit {
       eventId: [null, Validators.required],
       rating: [null, [Validators.required, Validators.min(1), Validators.max(5)]],
       content: ['', Validators.required],
-      date: [this.datePipe.transform(new Date(), 'yyyy-MM-dd')]
+      datestring: ['', [Validators.required]]
     });
 
     // Load the list of events. For simplicity, we fetch all events for
@@ -43,6 +43,10 @@ export class AddFeedbackComponent implements OnInit {
       error: () => (this.errorMessage = 'Failed to load events')
     });
   }
+  transformDate(control: AbstractControl){
+    const text = control.value;
+    this.datePipe.transform(text, 'yyyy-MM-dd');
+  }
 
 
   submit(): void {
@@ -52,6 +56,8 @@ export class AddFeedbackComponent implements OnInit {
       return;
     }
 
+    const formData = {...this.itemForm.value};
+    this.datePipe.transform(formData.datestring, 'yyyy-MM-dd');
     const userId = localStorage.getItem('userId');
     if (!userId) {
       this.errorMessage = 'User not logged in.';
@@ -59,8 +65,8 @@ export class AddFeedbackComponent implements OnInit {
       return;
     }
 
-    const { eventId, rating, content, date } = this.itemForm.value;
-    const payload = { rating, content, date };
+    const { eventId, rating, content, datestring } = this.itemForm.value;
+    const payload = { rating, content, datestring };
 
     this.httpService.addFeedbackByParticipants(eventId, userId, payload).subscribe({
       next: () => {
