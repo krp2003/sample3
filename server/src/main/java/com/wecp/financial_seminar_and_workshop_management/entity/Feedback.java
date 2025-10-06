@@ -2,6 +2,8 @@ package com.wecp.financial_seminar_and_workshop_management.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -16,7 +18,7 @@ public class Feedback {
     @Column(length=2000)
     private String content;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date timestamp;
 
     @ManyToOne @JoinColumn(name = "user_id")

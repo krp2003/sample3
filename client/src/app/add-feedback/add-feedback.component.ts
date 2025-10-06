@@ -31,7 +31,7 @@ export class AddFeedbackComponent implements OnInit {
     this.itemForm = this.fb.group({
       eventId: [null, Validators.required],
       rating: [null, [Validators.required, Validators.min(1), Validators.max(5)]],
-      comments: ['', Validators.required],
+      content: ['', Validators.required],
       date: [this.datePipe.transform(new Date(), 'yyyy-MM-dd')]
     });
 
@@ -67,7 +67,6 @@ export class AddFeedbackComponent implements OnInit {
         this.successMessage = 'Feedback submitted successfully.';
         this.errorMessage = '';
         this.itemForm.reset();
-        this.itemForm.patchValue({ date: this.datePipe.transform(new Date(), 'yyyy-MM-dd') });
       },
       error: () => {
         this.errorMessage = 'Failed to submit feedback.';
