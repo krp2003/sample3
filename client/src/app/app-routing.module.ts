@@ -15,6 +15,7 @@ import { ViewEventsComponent } from './view-events/view-events.component';
 import { AssignProfessionalComponent } from './assign-professional/assign-professional.component';
 import { UpdateEventStatusComponent } from './update-event-status/update-event-status.component';
 import { AddFeedbackComponent } from './add-feedback/add-feedback.component';
+import { EventDetailsComponent } from './event-details/event-details.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -26,7 +27,7 @@ const routes: Routes = [
   { path: 'update-event-status', component: UpdateEventStatusComponent }, 
   { path: 'add-feedback', component: AddFeedbackComponent }, 
   { path: 'view-events', component: ViewEventsComponent },  
-  
+  { path: 'events/:id', component: EventDetailsComponent},
   
  
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },

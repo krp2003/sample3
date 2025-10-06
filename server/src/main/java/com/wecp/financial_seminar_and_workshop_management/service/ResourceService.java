@@ -8,10 +8,23 @@ import com.wecp.financial_seminar_and_workshop_management.repository.ResourceRep
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
+@Service
 public class ResourceService {
 
-    // implement service methods here
+    @Autowired private ResourceRepository resourceRepository;
+    @Autowired private EventRepository eventRepository;
+
+    public Resource addToEvent(Long eventId, Resource resource) {
+        Event e = eventRepository.findById(eventId).orElseThrow();
+        resource.setEvent(e);
+        return resourceRepository.save(resource);
+    }
+
+    public List<Resource> getByEventId(Long eventId) {
+        return resourceRepository.findByEventId(eventId);
+    }
 }
