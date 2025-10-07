@@ -1,25 +1,23 @@
-<div class="container mt-4">
-  <h2>Enrolled Students</h2>
+<div class="page-container enrollments-page">
+  <h2 class="page-title">Event Enrollments</h2>
+  <p class="subtitle">Track participants registered for each event.</p>
 
-  <div *ngIf="loading">Loading enrollments...</div>
-  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
-
-  <table *ngIf="!loading && enrollments.length > 0" class="table table-bordered">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Student Name</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let enrollment of enrollments; let i = index">
-        <td>{{ i + 1 }}</td>
-        <td>{{ enrollment.user.username || 'N/A' }}</td>
-        <td>{{ enrollment.user.email || 'N/A' }}</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p *ngIf="!loading && enrollments.length === 0">No students enrolled yet.</p>
+  <div class="card table-card">
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Participant</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let enrollment of enrollments; index as i">
+          <td>{{ i + 1 }}</td>
+          <td>{{ enrollment.user.username }}</td>
+          <td>{{ enrollment.user.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

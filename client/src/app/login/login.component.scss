@@ -1,67 +1,40 @@
-/* Styling for the login form container */
-.login-container {
-  max-width: 420px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: var(--surface-color);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  text-align: center;
-}
-
-/* Heading styling */
-h2 {
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Form layout */
-.form-group {
-  margin-bottom: 1rem;
+.auth-page {
   display: flex;
-  flex-direction: column;
-  text-align: left;
-}
-.form-group label {
-  margin-bottom: 0.35rem;
-  font-weight: 500;
-  color: var(--text-secondary-color);
-}
-.form-group input {
-  padding: 0.6rem 0.8rem;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius);
-  font-size: 1rem;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-.form-group input:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
-  outline: none;
-}
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
 
-/* Button inherits global primary-btn styles */
-.primary-btn {
-  margin-top: 0.5rem;
-}
+  .auth-card {
+    width: 380px;
+    text-align: center;
 
-/* Error and link styling */
-.error-message {
-  color: #dc2626;
-  margin-top: 0.75rem;
-}
-.register-link {
-  margin-top: 1.2rem;
-  font-size: 0.9rem;
-  color: var(--text-secondary-color);
-}
-.register-link a {
-  color: var(--primary-color);
-  text-decoration: underline;
+    h2 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .form-group {
+      text-align: left;
+      margin-bottom: 1rem;
+
+      label {
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+        display: block;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.6rem;
+        border: 1px solid #d1d5db;
+        border-radius: var(--radius);
+        font-size: 1rem;
+      }
+    }
+
+    .alt-link {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+  }
 }

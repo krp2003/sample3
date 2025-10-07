@@ -25,6 +25,7 @@ export class ViewEnrollmentsComponent implements OnInit {
   fetchEnrollments(): void {
     this.http.getEnrollments(this.eventId).subscribe({
       next: (data) => {
+        console.log(data);
         this.enrollments = data;
         this.loading = false;
       },

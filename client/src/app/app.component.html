@@ -1,23 +1,50 @@
 <!-- <a routerLink="/dashboard">Dashboard</a> -->
-<nav class="navbar">
-    <a class="navbar-brand ms-3 fw-bold" routerLink="/">Finovent</a>
-    <div class="nav-wrapper">
-        
-        <ul class="nav-links" *ngIf="authService.getLoginStatus()">
-            <li><a routerLink="/dashboard">Dashboard</a></li>
-            <li *ngIf="!authService.hasAnyRole('professional', 'participant')"><a routerLink="/create-event">Create Event</a></li>
-            <li><a routerLink="/add-resource">Add Resource</a></li>
-            <li *ngIf="!authService.hasAnyRole('professional', 'participant')"><a routerLink="/assign-professional">Assign Professional</a></li>
-            <li *ngIf="!authService.hasAnyRole('participant')"><a routerLink="/update-event-status">Update Status</a></li>
-            <li *ngIf="authService.hasAnyRole('participant')"><a routerLink="/add-feedback">Add Feedback</a></li>
-            <li><a routerLink="/view-events">View Events</a></li>
-        </ul>
-        
-    </div>
-    <button *ngIf="authService.getLoginStatus()" class="logout-btn ms-3" (click)="logout()">Logout</button>
-    <button *ngIf="!authService.getLoginStatus()" routerLink="/login" class="login-btn ms-3">Login</button>
-    
-    <button *ngIf="!authService.getLoginStatus()" routerLink="/registration" class="register ms-3">Register</button>
-</nav>
 
-<router-outlet></router-outlet>
+
+<div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" [class.open]="sidebarOpen">
+      <div class="brand">
+        <h2>Finovent</h2>
+      </div>
+      <button class="close-btn" (click)="toggleSidebar()"><i class="fas fa-times"></i></button>
+  
+      <nav class="nav-links">
+        <a routerLink="/dashboard" routerLinkActive="active"><i class="fas fa-home"></i> Dashboard</a>
+        <a routerLink="/view-events" routerLinkActive="active"><i class="fas fa-calendar-alt"></i> Events</a>
+        <a routerLink="/view-enrollments" routerLinkActive="active" *ngIf="authService.getRole() === 'institution'">
+          <i class="fas fa-users"></i> Enrollments
+        </a>
+        <a routerLink="/add-resource" routerLinkActive="active" *ngIf="authService.getRole() === 'professional'">
+          <i class="fas fa-upload"></i> Resources
+        </a>
+        <a routerLink="/add-feedback" routerLinkActive="active" *ngIf="authService.getRole() === 'participant'">
+          <i class="fas fa-comment-dots"></i> Feedback
+        </a>
+      </nav>
+  
+      <div class="sidebar-footer">
+        <button *ngIf="authService.getLoginStatus()" (click)="logout()" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </aside>
+  
+    <!-- Main Content -->
+    <div class="main">
+      <!-- Top Navbar -->
+      <header class="topbar">
+        <div class="left">
+          <button class="menu-toggle" (click)="toggleSidebar()"><i class="fas fa-bars">Click</i></button>
+        </div>
+        <div class="right">
+          <span *ngIf="authService.getLoginStatus()" class="username">
+            <i class="fas fa-user-circle"></i> {{ authService.getUsername() }}
+          </span>
+        </div>
+      </header>
+  
+      <main class="content">
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+  </div>
+

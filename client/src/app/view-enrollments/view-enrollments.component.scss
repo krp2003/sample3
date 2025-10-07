@@ -1,0 +1,35 @@
+.enrollments-page {
+    .page-title {
+      color: var(--primary);
+      font-weight: 700;
+    }
+  
+    .table-card {
+      overflow-x: auto;
+    }
+  
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: var(--radius);
+      overflow: hidden;
+  
+      th, td {
+        padding: 0.9rem 1.2rem;
+        text-align: left;
+      }
+  
+      thead {
+        background: var(--primary);
+        color: #fff;
+      }
+  
+      tbody tr:nth-child(even) {
+        background: rgba(0, 0, 0, 0.04);
+      }
+  
+      tbody tr:hover {
+        background: rgba(37, 99, 235, 0.1);
+      }
+    }
+  }

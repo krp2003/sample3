@@ -1,24 +1,33 @@
-<div class="status-container">
-  <h2>Update Event Status</h2>
-  <form [formGroup]="itemForm" (ngSubmit)="submit()">
-    <div class="form-group">
-      <label for="eventId">Event</label>
-      <select id="eventId" formControlName="eventId">
-        <option [ngValue]="null">Select Event</option>
-        <option *ngFor="let event of events" [ngValue]="event.id">
-          {{ event.title || ('Event #' + event.id) }}
-        </option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="status">Status</label>
-      <select id="status" formControlName="status">
-        <option [ngValue]="''">Select Status</option>
-        <option *ngFor="let s of statuses" [ngValue]="s">{{ s }}</option>
-      </select>
-    </div>
-    <button type="submit" class="primary-btn">Update Status</button>
-  </form>
-  <p class="success-message" *ngIf="successMessage">{{ successMessage }}</p>
-  <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+<div class="page-container update-status-page">
+  <h2 class="page-title">Update Event Status</h2>
+  <p class="subtitle">Track and modify the progress of your scheduled events.</p>
+
+  <div class="card form-card">
+    <form [formGroup]="itemForm" (ngSubmit)="submit()">
+      <div class="form-group">
+        <label for="eventId">Select Event</label>
+        <select id="eventId" formControlName="eventId">
+          <option [ngValue]="null">Choose an event</option>
+          <option *ngFor="let event of events" [value]="event.id">{{ event.title }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select id="status" formControlName="status">
+          <option value="Scheduled">Scheduled</option>
+          <option value="Ongoing">Ongoing</option>
+          <option value="Completed">Completed</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="remarks">Remarks</label>
+        <textarea id="remarks" rows="3" formControlName="remarks" placeholder="Add any remarks..."></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary">Update Status</button>
+    </form>
+  </div>
 </div>

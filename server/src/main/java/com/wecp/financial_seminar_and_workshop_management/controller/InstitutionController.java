@@ -35,8 +35,10 @@ public class InstitutionController {
 
     @GetMapping("/api/institution/events")
     public ResponseEntity<List<Event>> getEvents(@RequestParam Long institutionId) {
+        System.out.println(institutionId);
         return ResponseEntity.ok(eventService.getForInstitution(institutionId));
     }
+    
 
     @PostMapping("/api/institution/event/{eventId}/resource")
     public ResponseEntity<Resource> addResourceToEvent(@PathVariable Long eventId, @RequestBody Resource resource) {

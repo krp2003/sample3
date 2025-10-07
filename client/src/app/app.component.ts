@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   IsLoggin:any=false;
   roleName: string | null;
-  constructor(public authService: AuthService, private router:Router)
+  constructor(public authService: AuthService, private router:Router, private cdRef: ChangeDetectorRef)
   {
    
     this.IsLoggin=authService.getLoginStatus;
@@ -24,7 +24,14 @@ export class AppComponent {
   logout()
 {
   this.authService.logout();
-  window.location.reload();
+  this.router.navigateByUrl('');
 }
+
+  sidebarOpen:boolean=false;
+
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+    this.cdRef.detectChanges();
+  }
 
 }

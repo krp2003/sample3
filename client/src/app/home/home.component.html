@@ -1,0 +1,40 @@
+<section class="landing">
+    <div class="hero-container">
+      <div class="hero-text">
+        <h1>Welcome to <span>Finovent</span></h1>
+        <p class="tagline">
+          A unified platform for financial institutions, professionals, and participants to manage and engage in events seamlessly.
+        </p>
+  
+        <!-- Show login button if user not logged in -->
+        <div *ngIf="!authService.getLoginStatus()" class="login-prompt">
+          <p>Please login to continue.</p>
+          <button routerLink="/login" class="btn-primary">Login Now</button>
+        </div>
+  
+        <!-- Show role-based options after login -->
+        <div *ngIf="authService.getLoginStatus()" class="role-cards">
+          <!-- Institution -->
+          <div *ngIf="authService.getRole() === 'institution'" class="card">
+            <h3>Institution Dashboard 🏫</h3>
+            <p>Organize and manage financial seminars and events.</p>
+            <button routerLink="/dashboard" class="btn-primary">Go to Dashboard</button>
+          </div>
+  
+          <!-- Professional -->
+          <div *ngIf="authService.getRole() === 'professional'" class="card">
+            <h3>Professional Tools 👩‍🏫</h3>
+            <p>View your assigned events and share resources.</p>
+            <button routerLink="/add-resource" class="btn-outline">Manage Resources</button>
+          </div>
+  
+          <!-- Participant -->
+          <div *ngIf="authService.getRole() === 'participant'" class="card">
+            <h3>Participant Access 👨‍🎓</h3>
+            <p>Browse upcoming events and enroll with ease.</p>
+            <button routerLink="/view-events" class="btn-primary">Explore Events</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

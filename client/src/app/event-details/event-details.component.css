@@ -31,3 +31,7 @@ a:hover {
 .text-muted {
   font-size: 0.9rem;
 }
+
+button {
+  margin-right: 20px;
+}

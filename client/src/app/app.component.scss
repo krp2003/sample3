@@ -1,102 +1,143 @@
-
-/* Navigation bar styling */
-
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  backdrop-filter: blur(12px);
-  background-color: rgba(15, 23, 42, 0.85);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  color: #ffffff;
-}
-
-.nav-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0.6rem 1rem;
-}
-
-.navbar-brand {
-  font-size: 2rem;
-  font-weight: 500;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    transition: background var(--transition), color var(--transition);
+  }
   
+  .sidebar {
+    width: 240px;
+    background-color: var(--primary);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 0;
+    transition: transform 0.5s ease-in-out;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%); /* ❗ Start hidden */
+    z-index: 10;
+  
+    &.open {
+      transform: translateX(0); /* ✅ Visible when open */
+    }
+  
+    .brand {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+    }
+  
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+  
+      a {
+        padding: 0.8rem 1.5rem;
+        color: #e0e7ff;
+        font-weight: 500;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        transition: background 0.3s ease;
+  
+        &:hover {
+          background: rgba(255, 255, 255, 0.15);
+        }
+  
+        &.active {
+          background: var(--accent);
+          color: var(--bg-dark);
+          font-weight: 600;
+        }
+  
+        i {
+          width: 20px;
+        }
+      }
+    }
+  
+    .sidebar-footer {
+      margin-top: auto;
+      text-align: center;
+  
+      .logout-btn {
+        background: transparent;
+        border: 2px solid #fff;
+        color: #fff;
+        border-radius: var(--radius);
+        padding: 0.6rem 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+  
+        &:hover {
+          background: #fff;
+          color: var(--primary);
+        }
+      }
+    }
+  }
+  
+  /* Main Area */
+  .main {
+    flex: 1;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    transition: margin 0.3s ease;
+  
+    &.shifted {
+      margin-left: 240px; /* ✅ Move main content when sidebar is open */
+    }
+  
+    .topbar {
+      height: 60px;
+      background: var(--card-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+  
+      .menu-toggle {
+        background: none;
+        border: none;
+        font-size: 1.3rem;
+        color: var(--primary);
+        cursor: pointer;
+      }
+  
+      .username {
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--primary);
+      }
+    }
+  
+    .content {
+      padding: 2rem;
+      flex: 1;
+    }
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .sidebar {
+      transform: translateX(-100%);
+      &.open {
+        transform: translateX(0);
+      }
+    }
 }
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links li a {
-  color: #cbd5e1;
-  text-decoration: none;
-  padding: 0.45rem 0.8rem;
-  border-radius: var(--radius);
-  font-weight: 500;
-  transition: background-color 0.25s ease, color 0.25s ease;
-}
-
-.nav-links li a.active,
-.nav-links li a:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-}
-
-/* Action buttons in nav */
-.logout-btn,
-.login-btn,
-.register {
-  margin-left: 1rem;
-  padding: 0.45rem 0.9rem;
-  border: none;
-  border-radius: var(--radius);
-  font-weight: 600;
-  cursor: pointer;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-}
-
-.login-btn {
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  color: #ffffff;
-}
-
-.register {
-  background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
-  color: #ffffff;
-  margin-right: 20px;
-}
-
-.logout-btn {
-  background-color: #ef4444;
-  color: #ffffff;
-  margin-right: 20px;
-}
-
-.login-btn:hover,
-.register:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-.logout-btn:hover {
-  background-color: #dc2626;
-}
-
-/* The body top padding is set globally in styles.scss */

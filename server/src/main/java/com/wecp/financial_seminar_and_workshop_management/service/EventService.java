@@ -39,6 +39,8 @@ public class EventService {
         return eventRepository.findByInstitutionIdOrderByIdAsc(institutionId);
     }
 
+
+
     public List<Event> getAllOrdered() {
         return eventRepository.findAllByOrderByIdAsc();
     }
