@@ -36,6 +36,11 @@
       <h3 class="card-title text-primary">{{ eventData.event.name }}</h3>
       <p class="card-text mb-1"><strong>Date:</strong> {{ eventData.event.schedule | date }}</p>
       <p class="card-text text-muted">{{ eventData.event.description }}</p>
+      <b>Professionals:</b>
+      <div *ngFor="let p of eventData.event.professionals">
+        <p>{{p.username}} | {{p.email}}</p>
+      </div>
+      <p class="card-text">Professional <strong>{{eventData.event.professional}}</strong></p>
     </div>
   </div>
 
@@ -49,7 +54,7 @@
         <ul class="list-group">
           <li class="list-group-item" *ngFor="let res of eventData.resources">
             <i class="bi bi-link-45deg text-primary me-2"></i>
-            {{res.description}}
+            <a href="{{res.description}}">{{res.type}}</a>
           </li>
         </ul>
       </div>
@@ -71,7 +76,6 @@
           <small class="text-muted">
             By <strong>{{ fb.user?.username }}</strong> — ⭐ {{ fb.rating }}/5
             <p>{{fb.content}}</p>
-            <p>Date: {{fb.datestring}}</p>
           </small>
         </div>
       </div>
@@ -80,10 +84,11 @@
       </ng-template>
     </div>
   </div>
-
-
-  <input type="button" value="View Enrollments" (click)="viewEnrollments()">
 </div>
+
+<input type="button" value="View Enrollments" (click)="viewEnrollments()">
+
+
 
 <!-- Loading State -->
 <div class="text-center mt-5" *ngIf="loading">

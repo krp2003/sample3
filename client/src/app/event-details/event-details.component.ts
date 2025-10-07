@@ -26,6 +26,7 @@ export class EventDetailsComponent implements OnInit {
   fetchEventDetails(): void {
     this.http.getEventDetails(this.eventId).subscribe({
       next: (res) => {
+        console.log(res);
         this.eventData = res;
         this.loading = false;
       },

@@ -1,8 +1,9 @@
 <!-- <a routerLink="/dashboard">Dashboard</a> -->
 <nav class="navbar">
+    <a class="navbar-brand ms-3 fw-bold" routerLink="/">Finovent</a>
     <div class="nav-wrapper">
-        <span class="brand">Finovent</span>
-        <ul class="nav-links">
+        
+        <ul class="nav-links" *ngIf="authService.getLoginStatus()">
             <li><a routerLink="/dashboard">Dashboard</a></li>
             <li *ngIf="!authService.hasAnyRole('professional', 'participant')"><a routerLink="/create-event">Create Event</a></li>
             <li><a routerLink="/add-resource">Add Resource</a></li>
@@ -11,11 +12,12 @@
             <li *ngIf="authService.hasAnyRole('participant')"><a routerLink="/add-feedback">Add Feedback</a></li>
             <li><a routerLink="/view-events">View Events</a></li>
         </ul>
-        <button *ngIf="authService.getLoginStatus()" class="logout-btn" (click)="logout()">Logout</button>
-        <button *ngIf="!authService.getLoginStatus()" routerLink="/login" class="login-btn">Login</button>
         
-        <button *ngIf="!authService.getLoginStatus()" routerLink="/registration" class="register">Register</button>
     </div>
+    <button *ngIf="authService.getLoginStatus()" class="logout-btn ms-3" (click)="logout()">Logout</button>
+    <button *ngIf="!authService.getLoginStatus()" routerLink="/login" class="login-btn ms-3">Login</button>
+    
+    <button *ngIf="!authService.getLoginStatus()" routerLink="/registration" class="register ms-3">Register</button>
 </nav>
 
 <router-outlet></router-outlet>

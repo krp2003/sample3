@@ -7,6 +7,8 @@ import com.wecp.financial_seminar_and_workshop_management.entity.User;
 import com.wecp.financial_seminar_and_workshop_management.jwt.JwtUtil;
 import com.wecp.financial_seminar_and_workshop_management.service.UserService;
 
+import java.io.Console;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,6 +30,7 @@ public class RegisterAndLoginController {
 
     @PostMapping("/api/user/register")
     public ResponseEntity<User> registerUser(@RequestBody User user) {
+        System.out.println(user);
         User saved = userService.register(user);
         return ResponseEntity.ok(saved);
     }

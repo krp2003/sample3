@@ -19,7 +19,7 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
     this.itemForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[*&#^%@!]){8,15}$')]],
+      password: ['', [Validators.required]],
       role: [null, Validators.required],
       username: ['', Validators.required]
     });
@@ -27,7 +27,7 @@ export class RegistrationComponent implements OnInit {
 
   register() {
     if (this.itemForm.invalid) return;
-
+    console.log(this.itemForm.value);
     this.httpService.registerUser(this.itemForm.value).subscribe({
       next: () => (this.successMessage = 'Registration successful'),
       error: () => (this.errorMessage = 'Failed to register user')
